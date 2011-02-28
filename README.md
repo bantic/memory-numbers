@@ -1,0 +1,1 @@
+Generate pages of random numbers to memorize. Practice for the (USA Memory Championships)[http://www.usamemorychampionship.com/]

@@ -1,0 +1,17 @@
+#container {
+  width: 560px;
+  border: 1px solid black;
+  margin: 20px auto;
+  padding: 12px 8px; }
+  #container .row {
+    margin-bottom: 10px; }
+    #container .row.last {
+      margin-bottom: 0; }
+    #container .row .number {
+      display: inline;
+      margin: 0 6px;
+      text-align: center; }
+    #container .row .row_num {
+      margin-left: 20px;
+      display: inline;
+      text-align: right; }

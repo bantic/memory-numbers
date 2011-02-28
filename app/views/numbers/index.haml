@@ -1,0 +1,11 @@
+
+- index = 0
+- 25.times do
+  - index += 1
+  - last_row = index == 25
+  %div{:class => "row #{last_row ? 'last' : ''}"}
+    - 20.times do
+      .number= @random.rand(10)
+    .row_num
+      Row
+      = index

@@ -91,6 +91,8 @@ function startGuessing() {
 function checkScore() {
   var rows = $("#row_count").val();
   var numbers_data = $("#numbers").data("numbers");
+  var missed_any = false;
+  var consecutive_correct = 0;
   
   for (var i = 0; i < rows; i++) {
     var row_data = numbers_data["row" + i];
@@ -98,9 +100,20 @@ function checkScore() {
     if (input_data != "") {
       for (var j = 0; j < row_length; j++) {
         if (row_data[j] != parseInt(input_data[j])) {
+          missed_any = true;
+          var missed_elem = $("#row" + i + " .number")[j];
+          $(missed_elem).css({border: "2px solid red"});
           console.log("missed row " + i + " position " + j);
+        } else {
+          if (!missed_any) {
+            consecutive_correct += 1;
+          }
         }
       }
     }
   }
+  
+  console.log("missed_any: " + missed_any);
+  console.log("consecutive_correct: " + consecutive_correct);
+  $(".rownumbers").show();
 }

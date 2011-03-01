@@ -1,11 +1,10 @@
+#form
+  Rows:
+  = text_field_tag :row_count, 5
+  = link_to_function "Fill", "startNumbers()"
+  #timer_link
+    = link_to_function "Start timer", "startTimer()"
+#timer
+#numbers
 
-- index = 0
-- 25.times do
-  - index += 1
-  - last_row = index == 25
-  %div{:class => "row #{last_row ? 'last' : ''}"}
-    - 20.times do
-      .number= @random.rand(10)
-    .row_num
-      Row
-      = index
+= link_to_function "Check score", "checkScore()"

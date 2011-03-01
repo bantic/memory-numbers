@@ -1,24 +1,24 @@
-#container {
-  width: 90%;
+#numbers {
+  width: 500px;
   text-align: center;
   border: 1px solid black;
   margin: 20px auto;
   padding: 12px 8px; }
-  #container .row {
+  #numbers .row {
     margin-bottom: 10px; }
-    #container .row.last {
+    #numbers .row.last {
       margin-bottom: 0; }
-    #container .row .number {
+    #numbers .row .number {
       display: inline;
       margin: 0 6px;
       text-align: center; }
-    #container .row .row_num {
+    #numbers .row .row_num {
       margin-left: 20px;
       display: inline;
       text-align: right; }
-  #container .rowinput {
+  #numbers .rowinput {
     display: none; }
-    #container .rowinput input {
+    #numbers .rowinput input {
       font-size: 14px;
       letter-spacing: 10px;
       text-align: center;

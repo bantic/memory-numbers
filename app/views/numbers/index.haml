@@ -1,10 +1,13 @@
-#form
-  Rows:
-  = text_field_tag :row_count, 5
-  = link_to_function "Fill", "startNumbers()"
+#setup
+  #form
+    Rows:
+    = text_field_tag :row_count, 5
+    = link_to_function "Fill", "startNumbers()"
   #timer_link
-    = link_to_function "Start timer", "startTimer()"
-#timer
+    = text_field_tag :minutes, "5"
+    = ":"
+    = text_field_tag :seconds, "00"
+    = link_to_function "Start timer3", "startTimer()"
 #numbers
 
 = link_to_function "Check score", "checkScore()"

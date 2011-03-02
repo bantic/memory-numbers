@@ -2,17 +2,14 @@ MemoryNumbers::Application.routes.draw do
   
   offline = Rack::Offline.configure do
     public_path = Pathname.new(Rails.public_path)
-    Dir[public_path.join("javascripts/*.js")].each do |file|
-      next if file =~ /all\.js/
-      cache Pathname.new(file).relative_path_from(public_path)
-    end
-    Dir[public_path.join("stylesheets/*.css")].each do |file|
-      next if file =~ /all\.css/
-      cache Pathname.new(file).relative_path_from(public_path)
-    end
     Dir[public_path.join("images/*")].each do |file|
       cache Pathname.new(file).relative_path_from(public_path)
     end
+  
+    cache "javascripts/rails.js"
+    cache "javascripts/application.js"
+    cache "javascripts/jquery.min.js"
+    cache "stylesheets/styles.css"
   
     network "/"
   end

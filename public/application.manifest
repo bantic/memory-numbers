@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# v1
+images/rails.png
+javascripts/rails.js
+javascripts/application.js
+javascripts/jquery.min.js
+stylesheets/styles.css
+
+NETWORK:
+/

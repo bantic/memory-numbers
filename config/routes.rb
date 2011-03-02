@@ -1,5 +1,21 @@
 MemoryNumbers::Application.routes.draw do
-  match "/application.manifest" => Rails::Offline
+  
+  offline = Rack::Offline.configure do
+    public_path = Pathname.new(Rails.public_path)
+    Dir[public_path.join("javascripts/*.js")].each do |file|
+      cache Pathname.new(file).relative_path_from(public_path)
+    end
+    Dir[public_path.join("stylesheets/*.css")].each do |file|
+      cache Pathname.new(file).relative_path_from(public_path)
+    end
+    Dir[public_path.join("images/*")].each do |file|
+      cache Pathname.new(file).relative_path_from(public_path)
+    end
+  
+    network "/"
+  end
+  
+  match "/application.manifest" => offline
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

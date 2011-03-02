@@ -26,7 +26,7 @@ function startNumbers() {
     }
     numbers_data["row" + i] = digits_in_row;
     row_html += "</div>";
-    row_html += "<div class='row rowinput'><input type='text' name='row" + i + "' id='rowinput" + i + "' /></div>";
+    row_html += "<div class='row rowinput'><input type='number' name='row" + i + "' id='rowinput" + i + "' /></div>";
     numbers_html += row_html;
   }
   $("#numbers").html(numbers_html);

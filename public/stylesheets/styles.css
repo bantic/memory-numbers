@@ -2,11 +2,29 @@ body {
   font-family: Monospace;
   font-size: 14px; }
 
-#numbers {
+#container {
   width: 500px;
+  margin: 0 auto; }
+
+#setup {
+  text-align: left; }
+
+#timer {
+  text-align: center; }
+
+#footer {
+  text-align: right;
+  margin-top: 40px; }
+
+#number_actions {
+  display: none; }
+
+#numbers {
+  display: none;
   border: 1px solid black;
   margin: 20px auto;
-  padding: 12px 8px; }
+  padding: 12px 8px;
+  text-align: center; }
   #numbers .row {
     margin-bottom: 10px; }
     #numbers .row.last {

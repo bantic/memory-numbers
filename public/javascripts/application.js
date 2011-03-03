@@ -4,9 +4,18 @@ $(document).ready(function() {
   
 });
 
+function startGame() {
+  startNumbers();
+  $("#setup").hide();
+  $("#play_info").show();
+  startTimer();
+}
+
 var row_length = 20;
 
 function startNumbers() {
+  $("#numbers").show();
+  $("#number_actions").show();
   var rows = $("#row_count").val();
   
   var numbers_data = {};
@@ -35,13 +44,17 @@ function startNumbers() {
 
 var start_time;
 var max_mins = 0;
-var max_seconds = 10;
-var max_total = 60*max_mins + max_seconds;
+var max_total = 60*max_mins;
+var timer_type = "memorization";
 
 function startTimer() {
-  max_mins = parseInt($("#minutes").val(), 10);
-  max_seconds = parseInt($("#seconds").val(), 10);
-  max_total = max_mins * 60 + max_seconds;
+  if (timer_type == "memorization") {
+    max_mins = parseInt($("#minutes").val(), 10);
+    max_total = max_mins * 60;
+  } else if (timer_type == "recall") {
+    max_mins = parseInt($("#recall_minutes").val(), 10);
+    max_total = max_mins * 60;
+  }
   console.log("max total: " + max_total);
   start_time = getSeconds();
   setTimeout(monitorTimer, 100);
@@ -71,13 +84,18 @@ function monitorTimer() {
   var secs_remaining = Math.round(remaining % 60);
   secs_remaining = secs_remaining == 60 ? 0 : secs_remaining;
   
-  $("#minutes").val(mins_remaining);
-  $("#seconds").val(padNum(Math.round(secs_remaining)));
+  var timer_val = mins_remaining.toString() + ":" + padNum(Math.round(secs_remaining));
+  $("#timer").html(timer_val);
   
   if (remaining > 0) {
     setTimeout(monitorTimer, 100);
   } else {
-    startGuessing();
+    if (timer_type == "memorization") {
+      startGuessing();
+      startRecallTimer();
+    } else if (timer_type == "recall") {
+      checkScore();
+    }
   }
 }
 
@@ -86,6 +104,11 @@ function startGuessing() {
   
   $(".rownumbers").hide();
   $(".rowinput").show();
+}
+
+function startRecallTimer() {
+  timer_type = "recall";
+  startTimer();
 }
 
 function checkScore() {

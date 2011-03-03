@@ -116,6 +116,7 @@ function checkScore() {
   var numbers_data = $("#numbers").data("numbers");
   var missed_any = false;
   var consecutive_correct = 0;
+  var total_correct = 0;
   
   for (var i = 0; i < rows; i++) {
     var row_data = numbers_data["row" + i];
@@ -128,6 +129,7 @@ function checkScore() {
           $(missed_elem).css({border: "2px solid red"});
           console.log("missed row " + i + " position " + j);
         } else {
+          total_correct += 1;
           if (!missed_any) {
             consecutive_correct += 1;
           }
@@ -138,5 +140,6 @@ function checkScore() {
   
   console.log("missed_any: " + missed_any);
   console.log("consecutive_correct: " + consecutive_correct);
+  $("#results").html("Consecutive correct: " + consecutive_correct + ". Total correct: " + total_correct);
   $(".rownumbers").show();
 }
